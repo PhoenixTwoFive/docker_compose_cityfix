@@ -1,0 +1,28 @@
+#Aktuellstes Alpine-Linux Basisimage, deutlich leichtgewichtiger und sicherer als Ubuntu, da speziell für Container gedacht.
+FROM php:7.1-fpm-alpine
+
+# Lumen-Abhängigkeiten installieren
+RUN apk update --no-cache
+RUN apk fix --no-cache
+RUN apk add --no-cache wget nano alpine-sdk bash
+RUN docker-php-ext-install pdo
+RUN docker-php-ext-install mbstring
+RUN php -i
+
+#xdebug
+COPY docker-php-pecl-install /usr/bin/
+RUN bash /usr/bin/docker-php-pecl-install xdebug-2.5.5
+
+
+# phpunit
+RUN wget https://phar.phpunit.de/phpunit.phar && \
+    chmod +x phpunit.phar && \
+    mv phpunit.phar /usr/local/bin/phpunit && \
+    phpunit --version
+
+# osmfilter
+RUN wget -O /tmp/osmfilter.c http://m.m.i24.cc/osmfilter.c && \
+    gcc -x c /tmp/osmfilter.c -O3 -o /tmp/osmfilter && \
+    mv /tmp/osmfilter /usr/local/bin/osmfilter
+
+WORKDIR /root/workspace
