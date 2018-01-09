@@ -1,5 +1,5 @@
 #Aktuellstes Alpine-Linux Basisimage, deutlich leichtgewichtiger und sicherer als Ubuntu, da speziell für Container gedacht.
-FROM php:7.1-fpm-alpine
+FROM php:7.1-cli-alpine
 
 # Lumen-Abhängigkeiten installieren
 RUN apk update --no-cache
@@ -10,8 +10,9 @@ RUN docker-php-ext-install mbstring
 RUN php -i
 
 #xdebug
-COPY docker-php-pecl-install /usr/bin/
-RUN bash /usr/bin/docker-php-pecl-install xdebug-2.5.5
+RUN apk add --update --virtual --no-cache autoconf
+RUN pecl install xdebug-2.5.5 \
+    && docker-php-ext-enable xdebug
 
 
 # phpunit

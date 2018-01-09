@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  apache:
+    #image: 
+    build: ./cityfix_apache/
+    container_name: apache
+    ports:
+      - "8081:80"
+      - "443:8443"
+    volumes:
+      - ${BACKENDDIR}:/var/www/html/
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
+    container_name: elasticsearch
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - node.master=true
+      - node.data=true
+      - transport.host=localhost
+      - transport.tcp.port=9300
+      - http.port=9200
+      - network.host=0.0.0.0
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ${ESDATA}:/usr/share/elasticsearch/data
+    ports: 
+      - "9300:9300"
+      - "9200:9200"
+
+  angulardev:
+    image: phillipkhne/docker_compose_cityfix:cityfix_frontend
+    container_name: angulardev
+    build: ./cityfix_frontend/
+    ports:
+      - "4200:4200"
+      - "9876:9876"
+    volumes:
+      - ${FRONTENDDIR}:/root/workspace
+    command: sh -c "echo $$PWD && npm install && ng serve -H 0.0.0.0 --proxy-config proxy.conf.json"

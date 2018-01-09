@@ -1,12 +1,8 @@
 version: '3'
 
 services:
-  api:
-    image: phillipkhne/docker_compose_cityfix:cityfix_api
-    build: ./cityfix_api/
-    volumes:
-      - ${BACKENDDIR}:/root/workspace
-
+  apache:
+    image: 
   elastic:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
     container_name: elasticsearch
