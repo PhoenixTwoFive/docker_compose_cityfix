@@ -5,7 +5,7 @@ Dieses Repository enthält die Docker-Einrichtung für das Cityfix-Projekt. Dies
 |Ordnername|Erläuterung|
 |----------|-----------|
 |`cityfix_apache`|Container, welcher Apache,PHP, und die bezogenen Entwicklungsplugins für PHP enthält|
-|`cityfix_apache`|Container, welcher eine Version des obigen Containers ohne Entwicklungsbezogene Software, zur Nutzung in der Auslieferung enthalten wird. **Noch nicht vollständig!**|
+|`cityfix_apache_prod`|Container, welcher eine Version des obigen Containers ohne Entwicklungsbezogene Software, zur Nutzung in der Auslieferung enthalten wird. **Noch nicht vollständig!**|
 |`cityfix_api`|Container, welcher PHP, PHPUnit, composer und das `lumen`-Kommandozeilenwerkzeug enthält. `backend-terminal.sh` nutzt diesen Container.|
 |`cityfix_elastic`| Würde Container mit Elasticsearch enthalten, ersetzt durch den [Offiziellen ES-Container](https://www.docker.elastic.co/)|
 |`cityfix_frontend`|Enthält alle Werkzeuge welche sich auf die Frontend-Entwicklung beziehen. Analog zum bisherigen `frontendtools`-Container. `frontend-terminal.sh` nutzt diesen Container.|
