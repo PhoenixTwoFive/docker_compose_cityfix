@@ -1,5 +1,5 @@
 #Aktuellstes Alpine-Linux Basisimage, deutlich leichtgewichtiger und sicherer als Ubuntu, da speziell für Container gedacht.
-FROM php:7.1-cli-alpine
+FROM php:7.1-fpm-alpine
 
 # Lumen-Abhängigkeiten installieren
 RUN apk update --no-cache
@@ -8,6 +8,9 @@ RUN apk add --no-cache wget nano alpine-sdk bash
 RUN docker-php-ext-install pdo
 RUN docker-php-ext-install mbstring
 RUN php -i
+
+#lumen selbst
+RUN composer global require "laravel/lumen-installer"
 
 #xdebug
 RUN apk add --update --virtual --no-cache autoconf

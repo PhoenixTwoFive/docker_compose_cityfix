@@ -42,3 +42,9 @@ services:
     volumes:
       - ${FRONTENDDIR}/code/cityfix_frontend/frontend:/root/workspace
     command: sh -c "echo $$PWD && npm install && ng serve -H 0.0.0.0 --proxy-config proxy.conf.json"
+
+  phpdev:
+    container_name: phpdev
+    build: ./cityfix_api
+    volumes:
+      - ${PROJECTDIR}/code/cityfix_api:/root/workspace
