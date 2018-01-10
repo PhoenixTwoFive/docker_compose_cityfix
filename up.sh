@@ -1,6 +1,5 @@
 #!/bin/bash
 #Einrichtung: Hier die Pfade eintragen:
-FRONTENDDIR=
-BACKENDDIR=
-ESDATA=
-docker compose up
+export PROJJECTDIR=""
+export ESDATA=""
+docker-compose up
