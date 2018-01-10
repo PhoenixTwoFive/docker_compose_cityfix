@@ -1,4 +1,4 @@
 # TODO für API-Container:
-- [ ] PHP installieren
-- [ ] PHPUnit installieren
-- [ ] Abhängigeiten beider Installieren
+- [x] PHP installieren
+- [x] PHPUnit installieren
+- [x] Abhängigeiten beider Installieren

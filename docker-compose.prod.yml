@@ -1,3 +1,4 @@
+#Composefile für die einrichtung zur Auslieferung auf dem Server. Momentan unvollständig.
 version: '3'
 
 services:

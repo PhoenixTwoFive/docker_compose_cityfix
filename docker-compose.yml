@@ -1,8 +1,7 @@
+#Composefile für den gesamten Stack, zur Entwicklung.
 version: '3'
-
 services:
   apache:
-    #image: 
     build: ./cityfix_apache/
     container_name: apache
     ports:
