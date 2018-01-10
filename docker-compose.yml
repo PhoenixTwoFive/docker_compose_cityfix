@@ -40,5 +40,5 @@ services:
       - "4200:4200"
       - "9876:9876"
     volumes:
-      - ${FRONTENDDIR}/code/cityfix_frontend/frontend:/root/workspace
+      - ${PROJECTDIR}/code/cityfix_frontend/frontend:/root/workspace
     command: sh -c "echo $$PWD && npm install && ng serve -H 0.0.0.0 --proxy-config proxy.conf.json"
