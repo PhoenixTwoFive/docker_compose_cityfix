@@ -7,7 +7,6 @@ RUN apk fix --no-cache
 RUN apk add --no-cache wget nano alpine-sdk bash
 RUN docker-php-ext-install pdo
 RUN docker-php-ext-install mbstring
-RUN docker-php-ext-install memcached
 RUN php -i
 
 #composer installieren
@@ -19,8 +18,14 @@ RUN composer global require "laravel/lumen-installer"
 
 #xdebug
 RUN apk add --update --virtual --no-cache autoconf
-RUN pecl install xdebug-2.5.5 \
+RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
+
+
+#memcached
+RUN apk add --update --virtual --no-cache autoconf
+RUN pecl install memcached \
+    && docker-php-ext-enable memcached
 
 
 # phpunit
