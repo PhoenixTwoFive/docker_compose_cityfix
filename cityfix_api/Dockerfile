@@ -23,7 +23,7 @@ RUN pecl install xdebug \
 
 
 #memcached
-RUN apk add --update --virtual --no-cache zlib zlib-dev libmemcached libmemcached-dev
+RUN apk add --update --virtual --no-cache zlib zlib-dev libmemcached libmemcached-dev libgsasl libgsasl-dev
 RUN pecl install memcached \
     && docker-php-ext-enable memcached
 
