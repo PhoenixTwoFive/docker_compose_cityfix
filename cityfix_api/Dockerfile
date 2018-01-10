@@ -7,7 +7,10 @@ RUN apk fix --no-cache
 RUN apk add --no-cache wget nano alpine-sdk bash
 RUN docker-php-ext-install pdo
 RUN docker-php-ext-install mbstring
+RUN docker-php-ext-install memcached
 RUN php -i
+
+#composer installieren
 RUN apk add --no-cache curl
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
