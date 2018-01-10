@@ -23,9 +23,10 @@ RUN pecl install xdebug \
 
 
 #memcached
-RUN apk add --update --virtual --no-cache autoconf
+RUN apk add --update --virtual --no-cache zlib-dev
 RUN pecl install memcached \
     && docker-php-ext-enable memcached
+
 
 
 # phpunit
