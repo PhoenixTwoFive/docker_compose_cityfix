@@ -8,6 +8,7 @@ RUN apk add --no-cache wget nano alpine-sdk bash
 RUN docker-php-ext-install pdo
 RUN docker-php-ext-install mbstring
 RUN php -i
+RUN apk add --no-cache composer
 
 #lumen selbst
 RUN composer global require "laravel/lumen-installer"
