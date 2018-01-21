@@ -1,2 +1,2 @@
 #!/bin/bash
-docker exec -it phpdev bash
+docker exec -it phpdev sh

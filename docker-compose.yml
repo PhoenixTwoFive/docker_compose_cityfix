@@ -2,6 +2,7 @@
 version: '3'
 services:
   apache:
+    image: phillipkhne/docker_compose_cityfix:cityfix_apache
     build: ./cityfix_apache/
     container_name: apache
     ports:
@@ -43,7 +44,9 @@ services:
     command: sh -c "echo $$PWD && npm install && ng serve -H 0.0.0.0 --proxy-config proxy.conf.json"
 
   phpdev:
+    image: phillipkhne/docker_compose_cityfix:cityfix_api
     container_name: phpdev
     build: ./cityfix_api
     volumes:
       - ${PROJECTDIR}/code/cityfix_api:/root/workspace
+    command: sh -c "composer update && php-fpm"

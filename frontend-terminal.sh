@@ -1,2 +1,2 @@
 #!/bin/bash
-docker exec -it angulardev bash
+docker exec -it angulardev sh
