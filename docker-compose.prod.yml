@@ -4,12 +4,15 @@ version: '3'
 services:
   apache:
     image: phillipkhne/docker_compose_cityfix:cityfix_apache_prod
+    build: ./cityfix_apache_prod/
     container_name: apache
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - /tmp/test:/var/www/
+    depends_on:
+      - elasticsearch
 
   elastic:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
@@ -39,6 +42,8 @@ services:
     volumes:
       - /tmp/test/backend:/root/workspace
     command: sh -c "composer update && php artisan locations:fetch"
+  depends_on:
+      - elasticsearch
 
 volumes:
   esdata:
