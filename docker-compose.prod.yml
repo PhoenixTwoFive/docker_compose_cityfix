@@ -36,7 +36,6 @@ services:
   phpdev:
     image: phillipkhne/docker_compose_cityfix:cityfix_api
     container_name: phpdev
-    build: ./cityfix_api
     volumes:
       - /tmp/test/backend:/root/workspace
     command: sh -c "composer update && php artisan locations:fetch"
