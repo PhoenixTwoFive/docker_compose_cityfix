@@ -10,6 +10,9 @@ services:
       - "443:8443"
     volumes:
       - ${PROJECTDIR}/code/cityfix_api:/var/www/html/
+    depends_on:
+      - elasticsearch
+
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
     container_name: elasticsearch
@@ -42,6 +45,8 @@ services:
     volumes:
       - ${PROJECTDIR}/code/cityfix_frontend/frontend:/root/workspace
     command: sh -c "echo $$PWD && npm install && ng serve -H 0.0.0.0 --proxy-config proxy.conf.json"
+    depends_on:
+      - apache
 
   phpdev:
     image: phillipkhne/docker_compose_cityfix:cityfix_api
@@ -50,3 +55,5 @@ services:
     volumes:
       - ${PROJECTDIR}/code/cityfix_api:/root/workspace
     command: sh -c "composer update && php-fpm"
+    depends_on:
+      - elasticsearch
