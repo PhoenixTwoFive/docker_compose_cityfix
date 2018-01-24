@@ -7,7 +7,7 @@ services:
     build: ./cityfix_apache_prod/
     container_name: apache
     volumes:
-      - /tmp/test/backend:/var/www/
+      - /var/www:/var/www/
     depends_on:
       - elasticsearch
 
@@ -47,7 +47,7 @@ services:
     build: ./cityfix_reverseproxy/
     container_name: nginx
     volumes:
-      - /tmp/test/html:/usr/share/nginx/html
+      - /var/www/html:/usr/share/nginx/html
     ports:
       - "80:80"
       - "443:443"
