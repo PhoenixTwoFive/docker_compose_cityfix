@@ -37,7 +37,7 @@ services:
     image: phillipkhne/docker_compose_cityfix:cityfix_api
     container_name: phpdev
     volumes:
-      - /tmp/test/backend:/root/workspace
+      - /var/www/backend:/root/workspace
     command: sh -c "composer update && php artisan locations:fetch"
     depends_on:
       - elasticsearch
