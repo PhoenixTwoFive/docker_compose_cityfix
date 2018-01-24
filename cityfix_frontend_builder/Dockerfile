@@ -19,9 +19,8 @@ EXPOSE 9876
 
 # OpenSSH-Client (für Deployment)
 RUN apk add --no-cache openssh-client
-
-#Build-Script
-COPY ./build.sh /root/workspace/build.sh
+# rsync für deployment
+RUN apk add --no-cache rsync
 
 WORKDIR /root/workspace
 

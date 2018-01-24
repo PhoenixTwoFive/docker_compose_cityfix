@@ -6,11 +6,8 @@ services:
     image: phillipkhne/docker_compose_cityfix:cityfix_apache_prod
     build: ./cityfix_apache_prod/
     container_name: apache
-    ports:
-      - "80:80"
-      - "443:443"
     volumes:
-      - /tmp/test:/var/www/
+      - /tmp/test/backend:/var/www/
     depends_on:
       - elasticsearch
 
@@ -44,6 +41,18 @@ services:
     command: sh -c "composer update && php artisan locations:fetch"
     depends_on:
       - elasticsearch
+
+  nginx:
+    image: phillipkhne/docker_compose_cityfix:cityfix_reverseproxy
+    build: ./cityfix_reverseproxy/
+    container_name: nginx
+    volumes:
+      - /tmp/test/html:/usr/share/nginx/html
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - apache
 
 volumes:
   esdata:
