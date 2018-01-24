@@ -48,6 +48,8 @@ services:
     container_name: nginx
     volumes:
       - /var/www/html:/usr/share/nginx/html
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /etc/ssl/private:/etc/ssl/private:ro
     ports:
       - "80:80"
       - "443:443"
