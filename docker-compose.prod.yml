@@ -29,9 +29,6 @@ services:
         hard: -1
     volumes:
       - esdata:/usr/share/elasticsearch/data
-    ports: 
-      - "9300:9300"
-      - "9200:9200"
 
   phpdev:
     image: phillipkhne/docker_compose_cityfix:cityfix_api
