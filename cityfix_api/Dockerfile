@@ -21,6 +21,12 @@ RUN apk add --update --virtual --no-cache autoconf
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
 
+# OpenSSH-Client (für Deployment)
+RUN apk add --no-cache openssh-client
+# rsync für deployment
+RUN apk add --no-cache rsync
+
+
 
 #memcached
 RUN apk add --update --virtual --no-cache zlib zlib-dev libmemcached libmemcached-dev cyrus-sasl-dev cyrus-sasl
