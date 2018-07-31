@@ -11,7 +11,7 @@ RUN apk add --no-cache nodejs-npm
 
 # angular
 RUN npm install -g @angular/cli --unsafe
-
+RUN npm install -g typescript@2.7
 
 # Ports zum Host öffnen (für "ng serve" und "ng test")
 EXPOSE 4200
